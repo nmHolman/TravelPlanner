@@ -1,0 +1,151 @@
+body {
+    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0px;
+}
+
+#app {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto ;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+        "hd hd hd hd"
+        "hd hd hd hd"
+        "zip zip rs rs"
+        "fl fl rs rs"
+        "fl fl rs rs";
+    height: 100vh;
+    margin: 0 1em;
+    background: #ffffff;
+    color: #000000;
+    justify-content: center;
+    grid-gap: 1.5em;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.holder {
+    background-color:#fff;
+}
+
+.headline {
+    grid-area: hd;
+    font-size: 45px;
+    padding: 20px 0;
+    border-bottom: 2px solid tomato;
+}
+
+.zip {
+    grid-area: zip;
+}
+
+#zip {
+    width: 100%;
+}
+
+.feel {
+    grid-area: fl;
+    display:flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+#feelings {
+    width: 100%;
+}
+
+#generate {
+    margin: 15px auto 1.2em auto;
+}
+
+.title {
+    background-color: #fff;
+    font-size: 27px;
+}
+
+.entry {
+    grid-area: rs;
+    background: rgba(196, 196, 196, 0.2);
+    margin-bottom: 1.3em;
+}
+
+#entryHolder {
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+#result {
+    color: rgb(255, 99, 71);
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/*  Basic Styling To Override Default For Basic HTML Elements */
+label {
+    display: block;
+    font-size: 27px;
+    padding-bottom: 5px;
+}
+
+input {
+    display: block;
+    height: 60px;
+    width: 320px;
+    background: #f1f1f1;
+    color: #000;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    border: none;
+    outline: 2px solid #000;
+}
+
+button {
+    width: 100%;
+    height: 80px;
+    background: #ff6347;
+    color: #fff;
+    font-size: 26px;
+    font-family: 'Oswald', sans-serif;
+    border: none;
+    box-shadow: 2px 4px 5px #444;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+textarea {
+    background: #f1f1f1;
+    color: #000;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    border: none;
+    outline: 2px solid #000;
+}
+
+/* Reset style for HTML element on active to have no border*/
+/* input:focus,
+select:focus,
+textarea:focus, */
+button:focus {
+    outline: none;
+}
+
+/* Style for Placeholder Text*/
+::placeholder {
+    /* Firefox, Chrome, Opera */
+    color: #333;
+    font-family: 'Oswald', sans-serif;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #333;
+    font-family: 'Oswald', sans-serif;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #333;
+    font-family: 'Oswald', sans-serif;
+}
