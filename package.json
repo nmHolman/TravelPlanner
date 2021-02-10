@@ -1,5 +1,5 @@
 {
-  "name": "travelPlanningApp",
+  "name": "travel-planner",
   "version": "1.0.0",
   "description": "This application helps the user plan their trips.",
   "main": "server.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nmHolman/WeatherJournalApp.git"
+    "url": "git+https://github.com/nmHolman/TravelPlanner.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nmHolman/WeatherJournalApp/issues"
+    "url": "https://github.com/nmHolman/TravelPlanner/issues"
   },
-  "homepage": "https://github.com/nmHolman/WeatherJournalApp#readme",
+  "homepage": "https://github.com/nmHolman/TravelPlanner#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
