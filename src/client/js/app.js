@@ -3,8 +3,6 @@ const weatherAPIUrl = 'http://api.openweathermap.org/data/2.5/weather?';
 const weatherAPIKey = '52e6c7689672cdc242b9dcee26ee3094';
 
 
-
-
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
@@ -17,7 +15,10 @@ const getData = async (url, key) => {
     const geonamesKey = 'nmholman'
     const geonamesAPIUrl = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${zip}&maxRows=10&countryBias=US&username=${geonamesKey}`
 
-    const request = await fetch(geonamesAPIUrl);
+    const weatherbitKey = 'e60f819356e0417fa34fd746ed3b1849'
+    const weatherbitAPIUrl = `https://api.weatherbit.io/v2.0/forecast/daily?postal_code=${zip}&country=US&key=${weatherbitKey}`
+
+    const request = await fetch(weatherbitAPIUrl);
 
     try {
         const allData = await request.json();
