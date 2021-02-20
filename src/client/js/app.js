@@ -2,6 +2,9 @@
 const weatherAPIUrl = 'http://api.openweathermap.org/data/2.5/weather?';
 const weatherAPIKey = '52e6c7689672cdc242b9dcee26ee3094';
 
+
+
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
@@ -9,14 +12,18 @@ let newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
 // Get data from Weather API
 const getData = async (url, key) => {
     let zip = document.getElementById('zip').value;
-    let fullURL = `${url}q=${zip}&units=imperial&appid=${key}`
+    // let fullURL = `${url}q=${zip}&units=imperial&appid=${key}`
 
-    const request = await fetch(fullURL);
+    const geonamesKey = 'nmholman'
+    const geonamesAPIUrl = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${zip}&maxRows=10&countryBias=US&username=${geonamesKey}`
+
+    const request = await fetch(geonamesAPIUrl);
 
     try {
         const allData = await request.json();
-        const temp = allData.main['temp'];
-        return temp;
+        console.log(allData);
+        // const temp = allData.main['temp'];
+        // return temp;
 
     } catch (error) {
         console.log("error", error);
