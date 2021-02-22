@@ -1,97 +1,75 @@
-/* Global Variables */
-const weatherAPIUrl = 'http://api.openweathermap.org/data/2.5/weather?';
-const weatherAPIKey = '52e6c7689672cdc242b9dcee26ee3094';
-
-
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
 
 // Get data from Weather API
-const getData = async (url, key) => {
-    let zip = document.getElementById('zip').value;
-    // let fullURL = `${url}q=${zip}&units=imperial&appid=${key}`
+const getData = async () => {
+    let location = document.getElementById('city').value;
+    let tripDate = document.getElementById('date').value;
+    let locationData = await Client.getLocationData(location);
 
-    const geonamesKey = 'nmholman'
-    const geonamesAPIUrl = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${zip}&maxRows=10&countryBias=US&username=${geonamesKey}`
+    // extract lat/lng data
+    const lat = locationData.postalCodes[0]['lat'];
+    const lng = locationData.postalCodes[0]['lng'];
+
+    const coords = `lat=${lat}&lon=${lng}`;
 
     const weatherbitKey = 'e60f819356e0417fa34fd746ed3b1849'
-    const weatherbitAPIUrl = `https://api.weatherbit.io/v2.0/forecast/daily?postal_code=${zip}&country=US&key=${weatherbitKey}`
+    const weatherbitAPIUrl = `https://api.weatherbit.io/v2.0/forecast/daily?${coords}&units=I&key=${weatherbitKey}`
+    
 
-    const request = await fetch(weatherbitAPIUrl);
+    const weatherRequest = await fetch(weatherbitAPIUrl);
+    
 
     try {
-        const allData = await request.json();
-        console.log(allData);
-        // const temp = allData.main['temp'];
-        // return temp;
+        const weatherData = await weatherRequest.json();
+        
+        const tripData = {
+            date: tripDate,
+            city: weatherData.city_name,
+            state: weatherData.state_code,
+            country: weatherData.country_code
+        };
 
+        const country = tripData.country;
+        const countryFactsUrl = `http://restcountries.eu/rest/v2/alpha/${country}`;        
+        const countryRequest = await fetch(countryFactsUrl);
+        const countryData = await countryRequest.json();
+
+        console.log(countryData);
+
+        weatherData.data.forEach( i => {
+            if (i.datetime == tripDate) {
+                tripData.tempLow = i.low_temp;
+                tripData.tempHigh = i.high_temp;
+                tripData.precip = i.precip;
+            } else {
+                tripData.tempLow = "Forecast Unavailable";
+                tripData.tempHigh = "Forecast Unavailable";
+                tripData.precip = "Forecast Unavailable";
+            }
+        });
+
+        // console.log(weatherData)
+        // console.log(tripData)
+        return tripData;
+        
     } catch (error) {
         console.log("error", error);
     }
 };
-
-// Asnyc Post
-const postData = async (url, data) => {
-
-    const response = await fetch(url, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify(data),
-    });
-
-    try {
-        const newData = await response.json();
-        return newData;
-    } catch (error) {
-        console.log("error", error);
-    }
-};
-
-// Async GET
-const retrieveData = async (url) => {
-    const request = await fetch(url);
-    try {
-        const allData = await request.json()
-
-        lastDate = allData.slice(-1)[0].date;
-        lastTemp = allData.slice(-1)[0].temp;
-        lastFeeling = allData.slice(-1)[0].feelings;
-
-        document.getElementById('date').innerHTML = `<p>Date <br/><span id='result'>${lastDate}</span></p>`;
-        document.getElementById('temp').innerHTML = `<p>Temperature <br/><span id='result'>${lastTemp}&#176;F<span></p>`;
-        document.getElementById('content').innerHTML = `<p>Feelings <br/><span id='result'>${lastFeeling}<span></p>`;
-
-    } catch (error) {
-        console.log("error", error);
-    }
-};
-
-// POST GET
-function postGET(d) {
-    postData('/add', d).then(retrieveData('/data'));
-}
 
 // Click Event Function
 async function generateEntry(e) {
-    const temp = await getData(weatherAPIUrl, weatherAPIKey);
+
+    const tripData = await getData();
     const feelings = document.getElementById('feelings').value;
 
-    const newData = {
-        date: newDate,
-        temp: temp,
-        feelings: feelings,
-    }; 
-
-    postGET(newData);
+    
+    Client.postGET(tripData);
 
     document.getElementById('feelings').value = '';
-    document.getElementById('zip').value = '';
+    document.getElementById('city').value = '';
 }
 
-
-export { getData, postData, retrieveData,  postGET, generateEntry}
+export { getData, generateEntry}
