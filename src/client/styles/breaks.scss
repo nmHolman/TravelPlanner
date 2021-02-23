@@ -1,0 +1,34 @@
+/* MEDIUM SCREENS */
+@media(min-width: 481px) and (max-width: 1023px){
+    #newTrip {
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .trip {
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+/* LARGE SCREENS */
+@media(min-width: 1024px){
+    #app {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+    
+    #newTrip {
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .trip {
+        width: 90%;
+        max-width: 600px;
+        margin: 0px auto 32px auto;
+    }
+}

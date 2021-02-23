@@ -1,5 +1,0 @@
-const createTrip = () => {
-    
-}
-
-export {createTrip};

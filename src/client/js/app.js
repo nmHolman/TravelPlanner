@@ -66,7 +66,6 @@ const getData = async () => {
             }
         }
         
-        console.log(tripData)
         return tripData;
         
     } catch (error) {
@@ -81,7 +80,10 @@ async function generateEntry(e) {
     
     Client.postGET(tripData);
 
+    document.getElementById('date').value = '';
+    document.getElementById('country').value = '';
     document.getElementById('city').value = '';
+    document.getElementById('state').value = '';
 }
 
 export { getData, generateEntry}

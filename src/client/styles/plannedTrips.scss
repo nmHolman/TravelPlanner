@@ -5,25 +5,46 @@
     grid-template-rows: auto auto auto auto;
     grid-template-areas: 
         "ds ds dt dt"
-        "pc pc pc pc"
+        "img img img img"
+        "fore fore fore fore"
         "tw tw tw tw"
         "cf cf cf cf"        
     ;
-    gap: 10px;
+    gap: 20px;
     background-color: #fff;
-
     padding: 20px 20px;
+    margin-bottom: 32px;
     font-family: 'Inconsolata', monospace;
 
     .trip-destination {
         grid-area: ds;
         font-weight: 700;
         font-size: 20px;
+        letter-spacing: 2px;
     }
 
     .trip-date {
         grid-area: dt;
         text-align: right;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .img {
+        grid-area: img;
+        height: 150px;
+        width: 100%;
+        background-image: url('https://pixabay.com/get/g7c28cbe4462a208a86e3dcd72bbb1427db4988696f058470c31e7953f1315db72e670845cd76573d965c8500ffbdcf5194ddb82d1a4a002be232c77bb7571065_640.jpg');
+        object-fit: cover;
+        
+    }
+
+    .forecast-title {
+        grid-area: fore;
+        background-color: #FFD2D2;
+        color: #333;
+        width: 50%;
+        padding: 10px;
     }
 
     .trip-weather{
@@ -61,5 +82,33 @@
 
     .country-facts{
         grid-area: cf;
+        display: flex;
+        flex-direction: column;
+        padding: 15px 0px;
+
+        .title {
+            background-color: #FFD2D2;
+            color: #333;
+            width: 50%;
+            padding: 10px;
+        }
+
+        img {
+            height: 20px;
+        }
+
+        .fact-grp {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.75em 0em;
+            border-bottom: 2px solid #333;
+            margin: 0px auto;
+        }
+
+        .fact-label {
+            font-family: 'Inconsolata', monospace;
+            font-weight: 300;
+        }
     }
 }
