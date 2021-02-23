@@ -59,9 +59,16 @@ const states = [{"name": "Alabama", "abbreviation": "AL"},
     {"name": "Wyoming", "abbreviation": "WY"}
 ]
 
+const stateSelect = (s) => {
+    const dropdownList = document.getElementById('state');
+    
+    s.forEach( i => {
+        dropdownList.insertAdjacentHTML('beforeend', `<option value=${i.abbreviation}>${i.name}</option>`)
+    })
+}
+
 
 const countrySelect = async () => {
-    console.log('hello');
     const allCountriesUrl = 'https://restcountries.eu/rest/v2/all';
     const countryRequest = await fetch(allCountriesUrl);
     const countryData = await countryRequest.json();
@@ -74,7 +81,6 @@ const countrySelect = async () => {
 }
 
 const countryWatch = () => {
-    console.log(document.getElementById('country').value);
     if (document.getElementById('country').value == 'US') {
         document.getElementsByClassName('state')[0].style.display = 'block';
     } else {
@@ -83,8 +89,10 @@ const countryWatch = () => {
 }
 
 countrySelect();
+stateSelect(states);
 
 export {
     countrySelect,
-    countryWatch
+    countryWatch,
+    stateSelect
 }

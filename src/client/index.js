@@ -1,7 +1,7 @@
 import { getLocationData } from './js/getLocationData'
 import { getData, generateEntry} from './js/app'
 import { retrieveData, postData, postGET} from './js/serverTalk'
-import { countrySelect, countryWatch } from './js/locSelect'
+import { countrySelect, countryWatch, stateSelect } from './js/locSelect'
 
 
 import './styles/style.scss'
@@ -18,5 +18,6 @@ export {
     postGET,
     generateEntry,
     countrySelect,
-    countryWatch    
+    countryWatch,
+    stateSelect    
 }

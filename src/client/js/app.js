@@ -14,12 +14,10 @@ const getData = async () => {
 
     const coords = `lat=${lat}&lon=${lng}`;
 
-    const weatherbitKey = 'e60f819356e0417fa34fd746ed3b1849'
-    const weatherbitAPIUrl = `https://api.weatherbit.io/v2.0/forecast/daily?${coords}&units=I&key=${weatherbitKey}`
-    
-
-    const weatherRequest = await fetch(weatherbitAPIUrl);
-    
+    // Pull weather data
+    const weatherbitKey = 'e60f819356e0417fa34fd746ed3b1849';
+    const weatherbitAPIUrl = `https://api.weatherbit.io/v2.0/forecast/daily?${coords}&units=I&key=${weatherbitKey}`;
+    const weatherRequest = await fetch(weatherbitAPIUrl);   
 
     try {
         const weatherData = await weatherRequest.json();
@@ -27,11 +25,11 @@ const getData = async () => {
         const countryFactsUrl = `http://restcountries.eu/rest/v2/alpha/${country}`;        
         const countryRequest = await fetch(countryFactsUrl);
         const countryData = await countryRequest.json();
-        console.log(countryData);
+        console.log(locationData);
               
         const tripData = {
             date: tripDate,
-            city: weatherData.city_name,
+            city: locationData.postalCodes[0]['placeName'],
             state: weatherData.state_code,
             country: countryData.name,
             capital: countryData.capital,
