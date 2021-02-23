@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" name="viewport" content="width=device-width">
   <title>Weather Journal</title>
   <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 </head>
@@ -10,48 +10,45 @@
 <body>
   <div id="app">
     <div class="holder headline">
-      Travel Planner
+      TRAVEL PLANNER
     </div>
-    
-    <div class="holder country">
-      <label for="country">Country</label>
-      <select type="text" id="country">
-        <option value="">Select Country</option>        
-      </select>
-    </div>
+    <div id="newTrip-title">ADD NEW TRIP</div>
+    <div id="newTrip">
+      <div class="holder date">
+        <label for="date">Trip Date</label>
+        <input type="date" id="date">
+      </div>
 
-    <div class="holder city">
-      <label for="city">City</label>
-      <input type="text" id="city" placeholder="City">
-    </div>
+      <div class="holder country">
+        <label for="country">Country</label>
+        <select type="text" id="country">
+          <option value="">Select Country</option>
+        </select>
+      </div>
 
-    <div class="holder state">
-      <label for="state">State</label>
-      <select type="text" id="state">
-        <option value="">Select State</option>
-      </select>
-    </div>
+      <div class="holder city">
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="City">
+      </div>
 
-    <div class="holder date">
-      <label for="date">Trip Date</label>
-      <input type="date" id="date">
+      <div class="holder state">
+        <label for="state">State</label>
+        <select type="text" id="state">
+          <option value="">Select State</option>
+        </select>
+      </div>
+
+      <button id="generate" type="submit"> Add </button>
     </div>
     
-    
-    <div class="holder feel">
-      <label for="feelings">How are you feeling today?</label>
-      <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-      <button id="generate" type="submit"> Generate </button>
-    </div>
-    
-    
-    
-    <div class="holder entry">
-      <div class="title">Most Recent Entry</div>
-      <div id="entryHolder">
-        <div id="date"></div>
-        <div id="temp"></div>
-        <div id="content"></div>
+    <div id="planned-title">PLANNED TRIPS</div>
+
+    <div id="planned-trips">
+      <div class="trip">
+        <div class="trip-destination">Savannah, GA</div>
+        <div class="trip-date">2021-02-26</div>
+
+
       </div>
     </div>
   </div>

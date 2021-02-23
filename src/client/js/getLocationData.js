@@ -4,8 +4,7 @@ const getLocationData = async (loc) => {
     const location = loc;
     const geonamesKey = 'nmholman'
     
-    const geonamesAPIUrl = `http://api.geonames.org/postalCodeSearchJSON?placename=${location}&maxRows=10&username=${geonamesKey}`
-
+    const geonamesAPIUrl = `http://api.geonames.org/postalCodeLookupJSON?placename=${location}&maxRows=10&username=${geonamesKey}`
     // fetch data
     const request = await fetch(geonamesAPIUrl);
 

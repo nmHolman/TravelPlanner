@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;500&display=swap');
+
+#planned-trips {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: repeat(4 1fr);
+    grid-template-areas: 
+        "dt dt dt dt"
+        "cntry cntry cntry cntry"
+        "cty cty cty cty"
+        "st st st st"
+        "sbt sbt sbt sbt"
+    ;
+    background-color: #fff;
+    padding: 20px 20px;
+}

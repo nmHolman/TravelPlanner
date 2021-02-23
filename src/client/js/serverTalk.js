@@ -28,11 +28,11 @@ const retrieveData = async (url) => {
 
         const lastDate = allData.slice(-1)[0].date;
         const lastTemp = allData.slice(-1)[0].tempHigh;
-        const lastFeeling = allData.slice(-1)[0].feelings;
+        
 
         document.getElementById('date').innerHTML = `<p>Date <br/><span id='result'>${lastDate}</span></p>`;
         document.getElementById('temp').innerHTML = `<p>Temperature <br/><span id='result'>${lastTemp}&#176;F<span></p>`;
-        document.getElementById('content').innerHTML = `<p>Feelings <br/><span id='result'>${lastFeeling}<span></p>`;
+        
 
     } catch (error) {
         console.log("error", error);

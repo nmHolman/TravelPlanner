@@ -5,6 +5,8 @@ import { countrySelect, countryWatch, stateSelect } from './js/locSelect'
 
 
 import './styles/style.scss'
+import './styles/newTrip.scss'
+import './styles/plannedTrips.scss'
 
 // Click Event
 document.getElementById('generate').addEventListener('click', generateEntry);

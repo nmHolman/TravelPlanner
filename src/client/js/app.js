@@ -4,13 +4,18 @@ let newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
 
 // Get data from Weather API
 const getData = async () => {
-    let location = document.getElementById('city').value;
+    let city = document.getElementById('city').value;
+    let state = document.getElementById('state').value;
+    let country = document.getElementById('country').value;
+
+    let location = `${city}, ${state}&country=${country}`;
+
     let tripDate = document.getElementById('date').value;
     let locationData = await Client.getLocationData(location);
 
     // extract lat/lng data
-    const lat = locationData.postalCodes[0]['lat'];
-    const lng = locationData.postalCodes[0]['lng'];
+    const lat = locationData.postalcodes[0]['lat'];
+    const lng = locationData.postalcodes[0]['lng'];
 
     const coords = `lat=${lat}&lon=${lng}`;
 
@@ -25,11 +30,10 @@ const getData = async () => {
         const countryFactsUrl = `http://restcountries.eu/rest/v2/alpha/${country}`;        
         const countryRequest = await fetch(countryFactsUrl);
         const countryData = await countryRequest.json();
-        console.log(locationData);
               
         const tripData = {
             date: tripDate,
-            city: locationData.postalCodes[0]['placeName'],
+            city: locationData.postalcodes[0]['placeName'],
             state: weatherData.state_code,
             country: countryData.name,
             capital: countryData.capital,
