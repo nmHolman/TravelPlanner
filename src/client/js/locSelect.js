@@ -82,7 +82,7 @@ const countrySelect = async () => {
 
 const countryWatch = () => {
     if (document.getElementById('country').value == 'US') {
-        document.getElementsByClassName('state')[0].style.display = 'block';
+        document.getElementsByClassName('state')[0].style.display = 'flex';
     } else {
         document.getElementsByClassName('state')[0].style.display = 'none';
     }

@@ -2,6 +2,8 @@ import { getLocationData } from './js/getLocationData'
 import { getData, generateEntry} from './js/app'
 import { retrieveData, postData, postGET} from './js/serverTalk'
 import { countrySelect, countryWatch, stateSelect } from './js/locSelect'
+import {getImage} from './js/getImage'
+import { createTrip } from './js/createTrip'
 
 
 import './styles/style.scss'
@@ -21,5 +23,7 @@ export {
     generateEntry,
     countrySelect,
     countryWatch,
-    stateSelect    
+    stateSelect,
+    getImage,
+    createTrip    
 }

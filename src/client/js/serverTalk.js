@@ -30,8 +30,8 @@ const retrieveData = async (url) => {
         const lastTemp = allData.slice(-1)[0].tempHigh;
         
 
-        document.getElementById('date').innerHTML = `<p>Date <br/><span id='result'>${lastDate}</span></p>`;
-        document.getElementById('temp').innerHTML = `<p>Temperature <br/><span id='result'>${lastTemp}&#176;F<span></p>`;
+        // document.getElementById('date').innerHTML = `<p>Date <br/><span id='result'>${lastDate}</span></p>`;
+        // document.getElementById('temp').innerHTML = `<p>Temperature <br/><span id='result'>${lastTemp}&#176;F<span></p>`;
         
 
     } catch (error) {

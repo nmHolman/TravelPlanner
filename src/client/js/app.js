@@ -4,7 +4,8 @@ let newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
 
 // Get data from Weather API
 const getData = async () => {
-    let city = document.getElementById('city').value;
+    let c = document.getElementById('city').value;
+    let city = c.toUpperCase();
     let state = document.getElementById('state').value;
     let country = document.getElementById('country').value;
 
@@ -26,14 +27,16 @@ const getData = async () => {
 
     try {
         const weatherData = await weatherRequest.json();
+
+        // Pull country facts
         const country = weatherData.country_code;
         const countryFactsUrl = `http://restcountries.eu/rest/v2/alpha/${country}`;        
         const countryRequest = await fetch(countryFactsUrl);
         const countryData = await countryRequest.json();
-              
+    
         const tripData = {
             date: tripDate,
-            city: locationData.postalcodes[0]['placeName'],
+            city: city,
             state: weatherData.state_code,
             country: countryData.name,
             capital: countryData.capital,
@@ -46,6 +49,9 @@ const getData = async () => {
             }
         };
        
+        // Pull location image
+        const locationImg = await Client.getImage(tripData.city, tripData.state, tripData.country);
+        tripData.image = locationImg;
 
         for (let i of weatherData.data) {
             if (i.datetime == tripDate) {
@@ -54,12 +60,13 @@ const getData = async () => {
                 tripData.precip = i.precip;                
                 break;
             } else {    
-                tripData.tempLow = "Forecast Unavailable";
-                tripData.tempHigh = "Forecast Unavailable";
-                tripData.precip = "Forecast Unavailable";
+                tripData.tempLow = "--";
+                tripData.tempHigh = "--";
+                tripData.precip = "--";
             }
         }
         
+        console.log(tripData)
         return tripData;
         
     } catch (error) {
@@ -71,11 +78,9 @@ const getData = async () => {
 async function generateEntry(e) {
 
     const tripData = await getData();
-    const feelings = document.getElementById('feelings').value;
     
     Client.postGET(tripData);
 
-    document.getElementById('feelings').value = '';
     document.getElementById('city').value = '';
 }
 

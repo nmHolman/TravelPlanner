@@ -53,11 +53,8 @@ body {
     font-weight: 600;
 }
 
-.planned {
+#planned-trips {
     grid-area: pn;
-    display:flex;
-    flex-direction: column;
-    justify-content: end;
 }
 
 
