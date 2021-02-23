@@ -57,7 +57,7 @@ const states = [{"name": "Alabama", "abbreviation": "AL"},
     {"name": "West Virginia", "abbreviation": "WV"},
     {"name": "Wisconsin", "abbreviation": "WI"},
     {"name": "Wyoming", "abbreviation": "WY"}
-]
+];
 
 const stateSelect = (s) => {
     const dropdownList = document.getElementById('state');
@@ -65,6 +65,8 @@ const stateSelect = (s) => {
     s.forEach( i => {
         dropdownList.insertAdjacentHTML('beforeend', `<option value=${i.abbreviation}>${i.name}</option>`)
     })
+
+    return 'States imported';
 }
 
 
