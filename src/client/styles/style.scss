@@ -10,8 +10,8 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas: 
         "hd hd hd hd"
-        "hd hd hd hd"
-        "zip zip rs rs"
+        "dt dt cn cn"
+        "city city st st"
         "fl fl rs rs"
         "fl fl rs rs";
     height: 100vh;
@@ -35,13 +35,23 @@ body {
     border-bottom: 2px solid tomato;
 }
 
-.zip {
-    grid-area: zip;
+.city {
+    grid-area: city;
 }
 
-#zip {
-    width: 100%;
+.state {
+    grid-area: st;
+    display: none;
 }
+
+.country {
+    grid-area: cn;
+}
+
+.date {
+    grid-area: dt;
+}
+
 
 .feel {
     grid-area: fl;
@@ -87,11 +97,12 @@ label {
     padding-bottom: 5px;
 }
 
-input {
+input, select {
     display: block;
     height: 60px;
-    width: 320px;
+    width: 300px;
     background: #f1f1f1;
+    padding: 0px 15px;
     color: #000;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
