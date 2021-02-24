@@ -21,7 +21,8 @@ const getData = async () => {
     const coords = `lat=${lat}&lon=${lng}`;
 
     // Pull weather data
-    const weatherbitKey = 'e60f819356e0417fa34fd746ed3b1849';
+    const weatherbitKey = process.env.WEATHERBIT_KEY;
+
     const weatherbitAPIUrl = `https://api.weatherbit.io/v2.0/forecast/daily?${coords}&units=I&key=${weatherbitKey}`;
     const weatherRequest = await fetch(weatherbitAPIUrl);   
 

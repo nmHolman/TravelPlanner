@@ -1,9 +1,12 @@
 const getImage = async (city, state, country) => {
-    const pixabayApiKey = '13117425-1e3a6b225bb7249040edb3f24';
-    
+
+    let apiKey = {
+        pixabay_key: process.env.PIXABAY_KEY
+    };
+
     if (country == 'United States of America') {
         let location = encodeURIComponent(`${city}, ${state}`);
-        let pixabayApiUrl = `https://pixabay.com/api/?key=${pixabayApiKey}&q=${location}&image_type=photo`;
+        let pixabayApiUrl = `https://pixabay.com/api/?key=${apiKey.pixabay_key}&q=${location}&image_type=photo`;
 
         const imgReqest = await fetch(pixabayApiUrl);
         const img = await imgReqest.json();
@@ -15,7 +18,7 @@ const getImage = async (city, state, country) => {
         }
     } else {
         let location = encodeURIComponent(`${city}, ${country}`);
-        let pixabayApiUrl = `https://pixabay.com/api/?key=${pixabayApiKey}&q=${location}&image_type=photo`;
+        let pixabayApiUrl = `https://pixabay.com/api/?key=${apiKey.pixabay_key}&q=${location}&image_type=photo`;
 
         const imgReqest = await fetch(pixabayApiUrl);
         const img = await imgReqest.json();
